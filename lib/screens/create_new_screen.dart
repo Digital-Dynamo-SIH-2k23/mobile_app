@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:msme_connect/constants.dart';
 import 'package:msme_connect/screens/sign_in_screen.dart';
 import 'package:msme_connect/widgets/form_bg.dart';
@@ -21,6 +22,7 @@ class _CreateNewScreenState extends State<CreateNewScreen> {
   final TextEditingController confPassController = TextEditingController();
   bool hideText = true;
   bool rememberMe = false;
+  double successOpacity = 0;
 
   String? validateEmail(String? value) {
     const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
@@ -234,6 +236,66 @@ class _CreateNewScreenState extends State<CreateNewScreen> {
               ],
             ),
           ),
+          successOpacity == 0
+              ? SizedBox.shrink()
+              : SizedBox(
+                  height: height,
+                  width: width,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: height,
+                        width: width,
+                        color: Color(0xffB49570).withOpacity(0.4),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          decoration: kSignInBoxDecoration,
+                          height: height * 0.4,
+                          width: width,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 40.0,
+                              left: 61,
+                              right: 61,
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: height * 0.15,
+                                  child:
+                                      Lottie.asset("assets/json/success.json"),
+                                ),
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                Text(
+                                  "Register Success",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                Text(
+                                  "By tapping Sign In, you accept terms and privacy of this app.",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
         ],
       ),
     );
