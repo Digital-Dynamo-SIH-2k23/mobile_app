@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:msme_connect/constants.dart';
+import 'package:msme_connect/screens/create_new_screen.dart';
 import 'package:msme_connect/widgets/form_bg.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -192,11 +193,20 @@ class _SignInScreenState extends State<SignInScreen> {
                               height: height * 0.02,
                             ),
                             Center(
-                              child: Text(
-                                "Don't have an account?",
-                                style: GoogleFonts.poppins(
-                                  fontSize: width * 0.0815 / 2,
-                                  color: kTextColor,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => CreateNewScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Don't have an account?",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: width * 0.0815 / 2,
+                                    color: kTextColor,
+                                  ),
                                 ),
                               ),
                             ),
