@@ -152,6 +152,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                         height: 24.0,
                                         width: 24.0,
                                         child: Checkbox(
+                                          activeColor: kBorderColor,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6),
